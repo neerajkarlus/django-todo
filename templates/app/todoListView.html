@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul>
+    {% for todo in todos %}
+        <li>{{ todo.item }}</li>
+        <a href="/edit/{{ todo.id }}">Edit</a>  
+        <a href="/delete/{{ todo.id }}">Delete</a>  
+
+    {% endfor %}
+    </ul>
+
+    <form action="/addtodo /update/{{ todo.id }}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="item">
+        <input type="submit">
+
+    </form>
+</body>
+</html>
